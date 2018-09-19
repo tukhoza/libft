@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tukhoza <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/19 14:42:30 by tukhoza           #+#    #+#             */
-/*   Updated: 2018/05/31 11:02:14 by tukhoza          ###   ########.fr       */
+/*   Created: 2018/05/25 15:37:27 by tukhoza           #+#    #+#             */
+/*   Updated: 2018/06/06 14:56:13 by tukhoza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_strdel(char **as)
 {
-	char	*dup;
-	size_t	i;
-	int		j;
-
-	i = 0;
-	j = ft_strlen((char*)s1);
-	dup = (char *)malloc(sizeof(*s1) * (j + 1));
-	if (dup == NULL)
-		return (NULL);
-	while (s1[i] != '\0')
+	if (as)
 	{
-		dup[i] = s1[i];
-		i++;
+		if (*as)
+		{
+			free(*as);
+			*as = NULL;
+		}
 	}
-	dup[i] = '\0';
-	return (dup);
 }

@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tukhoza <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/19 14:42:30 by tukhoza           #+#    #+#             */
-/*   Updated: 2018/05/31 11:02:14 by tukhoza          ###   ########.fr       */
+/*   Created: 2018/06/01 15:45:52 by tukhoza           #+#    #+#             */
+/*   Updated: 2018/06/06 13:19:10 by tukhoza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	char	*dup;
-	size_t	i;
-	int		j;
+	int i;
 
 	i = 0;
-	j = ft_strlen((char*)s1);
-	dup = (char *)malloc(sizeof(*s1) * (j + 1));
-	if (dup == NULL)
-		return (NULL);
-	while (s1[i] != '\0')
+	if (!s || !f)
+		return ;
+	while (s[i] != '\0')
 	{
-		dup[i] = s1[i];
+		f(s + i);
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
 }

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tukhoza <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/19 14:42:30 by tukhoza           #+#    #+#             */
-/*   Updated: 2018/05/31 11:02:14 by tukhoza          ###   ########.fr       */
+/*   Created: 2018/05/22 09:17:56 by tukhoza           #+#    #+#             */
+/*   Updated: 2018/05/28 07:59:52 by tukhoza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	char	*dup;
-	size_t	i;
-	int		j;
+	int i;
+	int	j;
 
 	i = 0;
-	j = ft_strlen((char*)s1);
-	dup = (char *)malloc(sizeof(*s1) * (j + 1));
-	if (dup == NULL)
-		return (NULL);
+	j = 0;
 	while (s1[i] != '\0')
-	{
-		dup[i] = s1[i];
 		i++;
+	while (s2[j] != '\0')
+	{
+		s1[i] = s2[j];
+		i++;
+		j++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	s1[i] = '\0';
+	return (s1);
 }

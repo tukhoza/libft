@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tukhoza <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/19 14:42:30 by tukhoza           #+#    #+#             */
-/*   Updated: 2018/05/31 11:02:14 by tukhoza          ###   ########.fr       */
+/*   Created: 2018/05/30 08:49:38 by tukhoza           #+#    #+#             */
+/*   Updated: 2018/06/06 14:57:32 by tukhoza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	char	*dup;
+	size_t	size;
 	size_t	i;
-	int		j;
+	char	*snew;
 
-	i = 0;
-	j = ft_strlen((char*)s1);
-	dup = (char *)malloc(sizeof(*s1) * (j + 1));
-	if (dup == NULL)
+	if (s == NULL)
 		return (NULL);
-	while (s1[i] != '\0')
+	size = 0;
+	i = 0;
+	snew = NULL;
+	size = ft_strlen((char*)s);
+	snew = (char*)malloc((sizeof(char) * size) + 1);
+	if (snew == NULL)
+		return (NULL);
+	if (s != NULL)
 	{
-		dup[i] = s1[i];
-		i++;
+		while (i < size)
+		{
+			snew[i] = (*f)(s[i]);
+			i++;
+		}
+		snew[i] = '\0';
 	}
-	dup[i] = '\0';
-	return (dup);
+	return (snew);
 }

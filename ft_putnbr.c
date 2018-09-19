@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tukhoza <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/19 14:42:30 by tukhoza           #+#    #+#             */
-/*   Updated: 2018/05/31 11:02:14 by tukhoza          ###   ########.fr       */
+/*   Created: 2018/05/25 14:50:07 by tukhoza           #+#    #+#             */
+/*   Updated: 2018/06/11 12:05:31 by tukhoza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_putnbr(int nb)
 {
-	char	*dup;
-	size_t	i;
-	int		j;
-
-	i = 0;
-	j = ft_strlen((char*)s1);
-	dup = (char *)malloc(sizeof(*s1) * (j + 1));
-	if (dup == NULL)
-		return (NULL);
-	while (s1[i] != '\0')
+	if (nb <= -2147483648)
 	{
-		dup[i] = s1[i];
-		i++;
+		ft_putstr("-2147483648");
+		return ;
 	}
-	dup[i] = '\0';
-	return (dup);
+	if (nb < -9 || nb > 9)
+		ft_putnbr(nb / 10);
+	if (nb < 0)
+	{
+		if (nb >= -9 && nb <= 9)
+			ft_putchar('-');
+		ft_putchar('0' - (nb % 10));
+	}
+	else
+		ft_putchar('0' + (nb % 10));
 }

@@ -6,11 +6,13 @@
 /*   By: tukhoza <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/18 15:53:25 by tukhoza           #+#    #+#             */
-/*   Updated: 2018/05/18 16:01:59 by tukhoza          ###   ########.fr       */
+/*   Updated: 2018/06/13 13:29:01 by tukhoza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+#include "libft.h"
+
+size_t		ft_strlen(const char *str)
 {
 	int i;
 
